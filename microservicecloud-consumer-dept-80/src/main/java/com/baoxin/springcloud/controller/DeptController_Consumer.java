@@ -14,7 +14,9 @@ import com.baoxin.springcloud.entities.Dept;
 @RequestMapping("/consumer")
 public class DeptController_Consumer {
 
-	private static final String REST_URL_PREFIX = "http://localhost:8001";
+	//Ribbon和Eureka整合后Consumer可以直接调用服务而不用再关心地址和端口号
+	//private static final String REST_URL_PREFIX = "http://localhost:8001";
+	private static final String REST_URL_PREFIX = "http://MICROSERVICECLOUD-DEPT";
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -33,10 +35,5 @@ public class DeptController_Consumer {
 	@RequestMapping(value = "/dept/list")
 	public List<Dept> list() {
 		return restTemplate.getForObject(REST_URL_PREFIX + "/dept/list", List.class);
-	}
-	
-	@RequestMapping(value = "/dept/discovery")
-	public Object discovery(){
-		return restTemplate.getForObject(REST_URL_PREFIX + "/dept/discovery",Object.class);
 	}
 }
