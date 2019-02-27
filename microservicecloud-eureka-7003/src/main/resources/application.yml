@@ -1,7 +1,11 @@
 server: 
   port: 7003
+spring:
+   application:
+    name: registry-center  
 eureka: 
   instance:
+    instance-id: registry-center-cluster-7003
     hostname: eureka7003.com #eureka服务端的实例名称
   client: 
 #    register-with-eureka: false     #false表示不向注册中心注册自己。单机版euraka时设为false，高可用版要改为true
